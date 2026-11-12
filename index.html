@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday — Muhammag Zaidan Alfathoni</title>
+
+  <!-- Google Fonts: Kombinasi Script Kaligrafi & Editorial Serif sesuai Video Referensi -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================
+       AUDIO LATAR 
+  ========================================================== -->
+  <!-- Audio sengaja dikosongkan. -->
+  <audio id="bgMusic" loop preload="none">
+  <source src="assets/audio/birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+  <!-- Tombol kontrol musik: ikon musik = Play, ikon mute = Off (status diatur oleh js/script.js) -->
+  <button type="button" id="musicToggleBtn" class="music-btn" aria-label="Putar musik (Play)" title="Play" aria-pressed="false">
+    <svg class="music-icon icon-play" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
+    </svg>
+    <svg class="music-icon icon-off" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5m0-5-5 5"/>
+    </svg>
+  </button>
+
+  <!-- =========================================================
+       A. OPENING SCREEN & PASSCODE GATE 
+  ========================================================== -->
+  <section id="openingScreen" class="opening-screen">
+    <!-- STEP 1: Cover Happy Birthday -->
+    <div id="coverStep" class="opening-card active-step">
+<!-- Dekorasi Bunga & Ornamen -->
+      <div class="floral-corner floral-top-left" aria-hidden="true">
+        <svg viewBox="0 0 120 120" fill="none">
+          <path d="M15,95 C25,55 55,25 95,15" stroke="#3B0D11" stroke-width="1.2" opacity="0.45"/>
+          <path d="M40,55 C30,40 42,26 55,38 C46,48 40,55 40,55 Z" fill="#3B0D11" opacity="0.25"/>
+          <path d="M60,38 C55,22 70,12 80,25 C70,34 60,38 60,38 Z" fill="#3B0D11" opacity="0.25"/>
+          <circle cx="32" cy="70" r="3" fill="#3B0D11" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <div class="cover-center">
+        <div class="cover-title-wrapper">
+          <!-- Avatar dengan Topi Ulang Tahun -->
+          <div class="party-avatar">
+            <div class="party-hat" aria-hidden="true">
+              <svg viewBox="-10 0 60 60">
+                <polygon points="30,6 10,50 50,50" fill="#D8C3A5" stroke="#3B0D11" stroke-width="2"/>
+                <line x1="23" y1="22" x2="37" y2="22" stroke="#3B0D11" stroke-width="2"/>
+                <line x1="17" y1="35" x2="43" y2="35" stroke="#3B0D11" stroke-width="2"/>
+                <circle cx="30" cy="6" r="4" fill="#3B0D11"/>
+              </svg>
+            </div>
+            <div class="avatar-circle">
+              <img
+                src="assets/img/y.jpeg"
+                alt="Birthday Avatar"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23E6DFD5%22/><path d=%22M22,38 L30,15 L45,32 L55,32 L70,15 L78,38 C84,52 80,78 50,82 C20,78 16,52 22,38 Z%22 fill=%22%239E9589%22/><circle cx=%2238%22 cy=%2252%22 r=%225%22 fill=%22%23231718%22/><circle cx=%2262%22 cy=%2252%22 r=%225%22 fill=%22%23231718%22/><polygon points=%2246,60 54,60 50,66%22 fill=%22%23D48C8C%22/></svg>'"
+              />
+            </div>
+          </div>
+
+          <!-- Tipografi Mixed Script & Serif sesuai Video -->
+          <h1 class="mixed-heading cover-heading">
+            <span class="line-happy">
+              <span class="script-cap">H</span>appy
+            </span>
+            <span class="line-birthday">
+              <!-- Ilustrasi Amplop & Pena Bulu -->
+              <span class="envelope-quill-illust" aria-hidden="true">
+                <svg viewBox="0 0 120 90">
+                  <rect x="8" y="34" width="68" height="46" rx="3" fill="#D5C7B8" stroke="#6E5A4F" stroke-width="1.2"/>
+                  <polygon points="8,34 42,12 76,34" fill="#C4B4A3" stroke="#6E5A4F" stroke-width="1.2"/>
+                  <rect x="18" y="20" width="48" height="42" fill="#FBF9F5" stroke="#B8A99A" stroke-width="1"/>
+                  <polygon points="8,80 42,54 76,80" fill="#DFD3C6" stroke="#6E5A4F" stroke-width="1"/>
+                  <path d="M8,34 L42,58 L76,34" fill="none" stroke="#6E5A4F" stroke-width="1.2"/>
+                  <path d="M62,78 C72,54 88,28 106,10 C108,24 98,46 80,62 C74,66 67,72 62,78 Z" fill="#3B0D11"/>
+                  <path d="M58,84 L106,10" stroke="#231718" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="script-cap">B</span>irthday
+            </span>
+          </h1>
+
+          <!-- Nama dengan Spasi Lebar -->
+          <p class="spaced-name" id="openingPersonName">Muhammad &nbsp; Zaidan &nbsp; Alfathoni</p>
+        </div>
+
+        <p class="opening-quote">
+          "A little digital memory book built with love, just for you."
+        </p>
+
+        <div class="opening-cta-center">
+          <button id="btnOpenInvitationBottom" class="pill-btn">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Pilih Kata Kunci / Passcode Gate -->
+    <div id="passcodeStep" class="opening-card">
+      <!-- Ornamen Gembok Hati Kiri & Kanan Atas -->
+      <div class="heart-lock lock-left" aria-hidden="true">
+        <svg viewBox="0 0 80 80">
+          <path d="M28,32 C28,18 48,18 48,32" fill="none" stroke="#8C7A6B" stroke-width="4" stroke-linecap="round"/>
+          <path d="M38,36 C28,24 12,30 14,45 C16,58 38,70 38,70 C38,70 60,58 62,45 C64,30 48,24 38,36 Z" fill="#4A1216"/>
+          <circle cx="38" cy="48" r="3" fill="#F4F1EA"/>
+          <path d="M38,50 L38,57" stroke="#F4F1EA" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="heart-lock lock-right" aria-hidden="true">
+        <svg viewBox="0 0 80 80">
+          <path d="M28,32 C28,18 48,18 48,32" fill="none" stroke="#8C7A6B" stroke-width="4" stroke-linecap="round"/>
+          <path d="M38,36 C28,24 12,30 14,45 C16,58 38,70 38,70 C38,70 60,58 62,45 C64,30 48,24 38,36 Z" fill="#D8A7B1"/>
+          <circle cx="38" cy="48" r="3" fill="#3B0D11"/>
+          <path d="M38,50 L38,57" stroke="#3B0D11" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="passcode-content">
+        <h2 class="mixed-title">
+          <span class="script-cap">P</span>ilih
+          <span class="script-cap">K</span>ata
+          <span class="script-cap">K</span>unci
+        </h2>
+        <p class="passcode-subtitle">untuk membuka hadiah</p>
+        <p class="passcode-hint">(Petunjuk: Pilih <strong>tanggal lahir</strong>  atau  <strong>tanggal jadian</strong>)</p>
+
+        <!-- Grid 6 Pilihan Tanggal -->
+        <div class="passcode-grid">
+          <button class="passcode-option" data-correct="false">131809</button>
+          <button class="passcode-option" data-correct="true">131109</button> 
+          <button class="passcode-option" data-correct="false">010926</button> 
+          <button class="passcode-option" data-correct="true">041026</button>
+          <button class="passcode-option" data-correct="false">041526</button>
+          <button class="passcode-option" data-correct="false">300926</button>
+        </div>
+</div>
+
+      <!-- Modal Feedback Kata Kunci -->
+      <div id="passcodeModal" class="passcode-modal hidden" role="dialog" aria-modal="true">
+        <div class="passcode-modal-box">
+          <div id="modalFaceIcon" class="modal-face-icon"></div>
+          <p id="modalFeedbackText" class="modal-feedback-text">! Kata Kunci Salah !</p>
+          <button id="modalActionBtn" class="modal-white-btn">Coba Lagi</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MAIN INVITATION CONTENT 
+  ========================================================== -->
+  <main id="mainContent" class="main-content hidden">
+
+    <!-- =======================================================
+         1. HOME / MAIN INVITATION 
+    ======================================================== -->
+    <section id="section-home" class="inv-section active-section">
+      <div class="stage-card">
+        <!-- Ornamen Hati Kiri & Kanan Atas -->
+        <div class="floating-hearts hearts-left" aria-hidden="true">
+          <span>&#10084;</span><span>&#10084;</span>
+        </div>
+        <div class="floating-hearts hearts-right" aria-hidden="true">
+          <span>&#10084;</span><span>&#10084;</span>
+        </div>
+        <button class="pill-btn section-next-btn" data-goto="section-wishes" aria-label="Lanjut ke ucapan">Next</button>
+
+        <div class="hero-birthday-center">
+
+          <!-- Komposisi Angka Usia & Potret Foto dengan Kue Ulang Tahun -->
+          <div class="age-portrait-stage">
+            <span class="giant-age age-left" id="ageDigitLeft">1</span>
+
+            <div class="portrait-wrapper">
+              <div class="hero-party-hat" aria-hidden="true">
+                <svg viewBox="0 0 60 60">
+                  <polygon points="30,5 12,52 48,52" fill="#E8DCCB" stroke="#3B0D11" stroke-width="2.2"/>
+                  <line x1="21" y1="22" x2="39" y2="22" stroke="#3B0D11" stroke-width="2.2"/>
+                  <line x1="16" y1="36" x2="44" y2="36" stroke="#3B0D11" stroke-width="2.2"/>
+                  <circle cx="30" cy="5" r="4.5" fill="#3B0D11"/>
+                </svg>
+              </div>
+
+              <div class="hero-photo-arch">
+                <img
+                  src="assets/img/WhatsApp Image 2026-11-11 at 18.38.19.jpeg"
+                  alt="Foto Ulang Tahun Muhammad Zaidan Alfathoni"
+                  onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 320%22><rect width=%22300%22 height=%22320%22 rx=%22140%22 fill=%22%23E5DDD0%22/><circle cx=%22150%22 cy=%22115%22 r=%2248%22 fill=%22%233B0D11%22 opacity=%220.85%22/><path d=%22M75,260 C75,195 225,195 225,260 Z%22 fill=%22%233B0D11%22 opacity=%220.85%22/><text x=%22150%22 y=%22295%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2214%22 fill=%22%233B0D11%22>Foto Kamu</text></svg>'"
+                />
+              </div>
+
+              <div class="hero-cake" aria-hidden="true">
+                <svg viewBox="0 0 160 110">
+                  <ellipse cx="80" cy="95" rx="68" ry="10" fill="#D9CFC3" stroke="#3B0D11" stroke-width="1.5"/>
+                  <rect x="28" y="48" width="104" height="44" rx="8" fill="#4A1A1E" stroke="#231718" stroke-width="1.5"/>
+                  <path d="M28,56 Q40,68 52,56 T76,56 T100,56 T124,56 T132,56" fill="none" stroke="#F4F1EA" stroke-width="4" stroke-linecap="round"/>
+                  <rect x="52" y="24" width="6" height="24" fill="#F4F1EA"/>
+                  <rect x="77" y="20" width="6" height="28" fill="#F4F1EA"/>
+                  <rect x="102" y="24" width="6" height="24" fill="#F4F1EA"/>
+                  <path d="M55,12 C51,18 53,23 55,23 C57,23 59,18 55,12 Z" fill="#FF9F1C"/>
+                  <path d="M80,8 C76,14 78,19 80,19 C82,19 84,14 80,8 Z" fill="#FF9F1C"/>
+                  <path d="M105,12 C101,18 103,23 105,23 C107,23 109,18 105,12 Z" fill="#FF9F1C"/>
+                </svg>
+              </div>
+            </div>
+
+            <span class="giant-age age-right" id="ageDigitRight">7</span>
+          </div>
+
+          <h2 class="mixed-title hero-greeting">
+            <span class="script-cap">H</span>appy
+            <span class="script-cap">B</span>irthday
+          </h2>
+          <p class="hero-subgreeting">My Favorite Person!</p>
+
+          <div class="person-meta-badge">
+            <span class="meta-name">Muhammad Zaidan Alfathoni</span>
+            <span class="meta-divider">&bull;</span>
+            <span class="meta-date">13 November 2009</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         2. BIRTHDAY WISHES 
+    ======================================================== -->
+    <section id="section-wishes" class="inv-section">
+      <div class="stage-card">
+        <button class="pill-btn section-next-btn" data-goto="section-story-map">Next</button>
+
+        <div class="wishes-editorial-grid">
+          <div class="wishes-left-col">
+            <h2 class="wishes-script-heading">
+              <span class="script-cap">H</span>appy<br />
+              <span class="script-cap">B</span>irthday
+            </h2>
+
+            <div class="tilted-polaroid">
+              <span class="washi-tape tape-top-left" aria-hidden="true"></span>
+              <span class="washi-tape tape-bottom-right" aria-hidden="true"></span>
+              <img
+                src="assets/img/WhatsApp Image 2026-11-11 at 18.42.23.jpeg"
+                alt="Kenangan Spesial"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 320 280%22><rect width=%22320%22 height=%22280%22 fill=%22%233B0D11%22/><circle cx=%22120%22 cy=%22115%22 r=%2234%22 fill=%22%23F4F1EA%22 opacity=%220.85%22/><circle cx=%22195%22 cy=%22120%22 r=%2232%22 fill=%22%23D8C3A5%22 opacity=%220.85%22/><path d=%22M70,240 C70,180 175,180 175,240 Z%22 fill=%22%23F4F1EA%22 opacity=%220.85%22/><path d=%22M145,240 C145,185 245,185 245,240 Z%22 fill=%22%23D8C3A5%22 opacity=%220.85%22/><text x=%22160%22 y=%22265%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2213%22 fill=%22%23F4F1EA%22>wish-photo.jpg</text></svg>'"
+              />
+            </div>
+
+            <div class="open-letter-ornament" aria-hidden="true">
+              <svg viewBox="0 0 110 80">
+                <rect x="10" y="25" width="76" height="48" rx="3" fill="#D5C7B8" stroke="#6E5A4F" stroke-width="1.2"/>
+                <rect x="20" y="10" width="56" height="44" fill="#FAF8F5" stroke="#B8A99A" stroke-width="1"/>
+                <path d="M28,22 H68 M28,30 H60" stroke="#9C8D7E" stroke-width="1.2"/>
+                <polygon points="10,73 48,46 86,73" fill="#DFD3C6" stroke="#6E5A4F" stroke-width="1"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="maroon-letter-card">
+            <div class="typewriter-container" id="wishesTypewriter" data-typed="false">
+              <p class="letter-salutation">hi dedee, happy sweet seventeen yaa sayanggg.</p>
+              <p>
+                selamat bertambah usia, semoga hal-hal baik selalu beriringan sama kamu, semoga semesta selalu berpihak ke kamu, dan semoga setiap jalan yang kamu tempuh buat meraih cita-cita selalu dipermudah. meskipun aku nggak ada di masa lalu atau masa tumbuh kembangmu dulu, aku harap di umur yang baru dan udah lama kamu nanti nanti ini, kamu bisa jadi pribadi yang makin dewasa, makin bijak dalam ngambil keputusan, dan pastinya jadi versi yang lebih baik dari sebelumnya.
+              </p>
+              <p>
+                ​sayang, makasih banyak ya udah mau hadir di hidup cewek yang kadang suka ribet dan nyebelin ini. makasih juga atas semua kesabaran yang udah kamu kasih ke aku, waktu yang rela kamu luangkan, dan segala usaha yang kamu beri buat aku. aku selalu bangga punya kamu. mungkin masa lalu kita sama sama nggak gampang, tapi semoga kita bisa terus melangkah bareng buat memperbaiki kesalahan kesalahan itu ya?
+              </p>
+              <p>
+                kalau dipikir pikir lagi, aku bersyukur banget semesta akhirnya mempertemukan kita di waktu yang paling tepat. aku tahu ke depannya perjalanan kita nggak bakal selalu mulus, pasti bakal ada beda pendapat atau hari hari yang bikin lelah. tapi aku janji, selama kamu mau jalan bareng bareng, aku juga bakal berusaha jadi tempat pulang yang nyaman buat kamu, tempat di mana kamu bisa jadi diri sendiri tanpa perlu takut dihakimi.
+              </p>
+              <p class="letter-closing">
+                Happy birthday, my love. I love you more than words can say
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         3. OUR STORY — BAGIAN 1: PETA JARAK 
+    ======================================================== -->
+    <section id="section-story-map" class="inv-section">
+      <div class="stage-card">
+        <button class="pill-btn section-next-btn" data-goto="section-story-reasons">Next</button>
+
+        <div class="vintage-map-stage">
+          <div class="map-visual-area">
+            <div class="location-pin pin-left">
+              <div class="pin-teardrop">
+                <img
+                  src="assets/img/abc.jpeg"
+                  alt="Lokasi 1"
+                  onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23D8C3A5%22/><circle cx=%2250%22 cy=%2240%22 r=%2218%22 fill=%22%233B0D11%22/><path d=%22M24,88 C24,62 76,62 76,88 Z%22 fill=%22%233B0D11%22/></svg>'"
+                />
+              </div>
+              <h3 class="mixed-location"><span class="script-cap">K</span>ediri</h3>
+            </div>
+
+            <div class="flight-heart-route" aria-hidden="true">
+              <svg viewBox="0 0 360 150">
+                <path
+                  class="dashed-flight-path"
+                  d="M 20,105 C 95,125 185,95 180,48 C 176,18 142,20 142,48 C 142,88 235,120 315,72"
+                  fill="none"
+                  stroke="#231718"
+                  stroke-width="2.2"
+                  stroke-dasharray="5,5"
+                />
+                <g transform="translate(308, 52) rotate(20)">
+                  <path d="M18,0 L24,14 L38,16 L24,21 L22,34 L16,22 L2,20 L14,14 Z" fill="#231718"/>
+                </g>
+              </svg>
+            </div>
+
+            <div class="location-pin pin-right">
+              <h3 class="mixed-location"><span class="script-cap">M</span>alang</h3>
+              <div class="pin-teardrop">
+                <img
+                  src="assets/img/def.jpeg"
+                  alt="Lokasi 2"
+                  onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23E6DFD5%22/><circle cx=%2250%22 cy=%2240%22 r=%2218%22 fill=%22%233B0D11%22/><path d=%22M24,88 C24,62 76,62 76,88 Z%22 fill=%22%233B0D11%22/></svg>'"
+                />
+              </div>
+            </div>
+          </div>
+
+
+          <div class="maroon-banner-box">
+            <p>
+              hi dedee sayanggg, meskipun jarak sering membatasi kita buat ngerayain hari spesial ini secara langsung, rasa sayang dan doaku selalu sampai buat kamu tanpa berkurang sedikit pun. makasii yaa udah bertahan, saling percaya, dan ngebuktiin kalau ruang di antara kita gak pernah cukup jauh buat menghalangi hubungan ini. semoga di umur kamu yang baru ini, hal-hal baik selalu beriringan sama kamu, semesta berpihak ke kamu, dan kamu bisa jadi pribadi yang makin dewasa serta makin bijak dalam ngambil keputusan. aku bersyukur banget semesta mempertemukan kita, makasih udah mau hadir di hidup cewek yang kadang nyebelin ini dan makasih atas semua kesabaran kamu. aku janji bakal selalu berusaha jadi tempat pulang yang nyaman buat kamu, love youuu!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         4. OUR STORY — BAGIAN 2: KENAPA KAMU SPESIAL BANGET? 
+    ======================================================== -->
+    <section id="section-story-reasons" class="inv-section">
+      <div class="stage-card">
+        <button class="pill-btn section-next-btn" data-goto="section-story-iloveyou">Next</button>
+
+        <div class="reasons-stage">
+          <h2 class="mixed-title reasons-heading">
+            <span class="script-cap">K</span>enapa
+            <span class="script-cap">K</span>amu
+            <span class="script-cap">S</span>pesial
+            <span class="script-cap">B</span>anget ?
+          </h2>
+
+          <div class="reasons-three-grid">
+            <article class="reason-maroon-card">
+              <h3 class="reason-card-title">
+                <span class="script-cap">S</span>enyuman
+              </h3>
+              <p>
+                Senyum dan ketawa kamu selalu jadi penyemangat terbaik pas aku lagi capek atau pusing seharian, bikin hariku langsung bikin tenangg dan aman lagi tiap liat kamu.
+              </p>
+            </article>
+
+            <article class="reason-maroon-card">
+              <h3 class="reason-card-title">
+                <span class="script-cap">P</span>enyayang
+              </h3>
+              <p>
+                ​Kamu selalu ada, percaya, dan dukung semua mimpiku tanpa ragu. Selalu bikin aku ngerasa dihargai dan punya tempat pulang. love you, Sayangkuu
+              </p>
+            </article>
+
+            <article class="reason-maroon-card">
+              <h3 class="reason-card-title">
+                <span class="script-cap">D</span>ukungan
+              </h3>
+              <p>
+                Kamu selalu percaya dan mendukung semua mimpiku. Selalu bikin aku merasa dihargai apa adanya. Love You Sayangkuu!
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         5. OUR STORY — BAGIAN 3: I LOVE YOU & FILMSTRIP 
+    ======================================================== -->
+    <section id="section-story-iloveyou" class="inv-section">
+      <div class="stage-card">
+        <button class="pill-btn section-next-btn" data-goto="section-gallery">Next</button>
+
+        <div class="iloveyou-editorial">
+          <div class="filmstrip-column">
+            <div class="vintage-filmstrip">
+              <div class="film-frame">
+                <img
+                  src="assets/img/masa kecil1.jpeg"
+                  alt="Momen 1"
+                  onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 140%22><rect width=%22200%22 height=%22140%22 fill=%22%23D8C3A5%22/><text x=%22100%22 y=%2275%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2214%22 fill=%22%233B0D11%22>Our Memory 01</text></svg>'"
+                />
+              </div>
+              <div class="film-frame">
+                <img
+                  src="assets/img/zaidan1.jpeg"
+                  alt="Momen 2"
+                  onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 140%22><rect width=%22200%22 height=%22140%22 fill=%22%23C8B6A6%22/><text x=%22100%22 y=%2275%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2214%22 fill=%22%233B0D11%22>Our Memory 02</text></svg>'"
+                />
+              </div>
+              <div class="film-frame">
+                <img
+                  src="assets/img/masa kecil 2.jpeg"
+                  alt="Momen 3"
+                  onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 140%22><rect width=%22200%22 height=%22140%22 fill=%22%23E2D6C5%22/><text x=%22100%22 y=%2275%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2214%22 fill=%22%233B0D11%22>Our Memory 03</text></svg>'"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="iloveyou-letter-col">
+            <h2 class="mixed-title iloveyou-heading">
+              <span class="script-cap">I</span>
+              <span class="script-cap">L</span>ove
+              <span class="script-cap">Y</span>ou
+            </h2>
+
+            <div class="maroon-letter-card paperclip-card">
+              <span class="paperclip-ornament" aria-hidden="true">
+                <svg viewBox="0 0 40 70">
+                  <path d="M18,52 L18,16 C18,8 30,8 30,16 L30,54 C30,64 12,64 12,54 L12,22" fill="none" stroke="#B8ABA0" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+
+              <p>
+                Hari ini bukan cuma tentang bertambahnya usiamu, tapi tentang merayakan hadirnya kamu di dunia ini orang yang membuat hari-hariku terasa jauh lebih hangat dan bermakna. Terima kasih ya, sudah menjadi sosok yang sangat luar biasa, yang selalu sabar, dan yang tak pernah lelah membagikan kebahagiaan.
+              </p>
+              <p>
+                Walaupun saat ini ada jarak yang memisahkan kita, percaya deh, rasa sayang dan doaku untukmu nggak pernah terhalang oleh kilometer apa pun. Setiap detik yang kita lalui bersama, bahkan lewat layar ponsel sekalipun, selalu jadi cerita favorit yang pengen aku ulang terus-terusan.
+              </p>
+              <p>
+                Di usiamu yang baru ini, aku berdoa semoga kamu selalu dilimpahi kebahagiaan yang tak terbatas, kesehatan yang prima, dan kemudahan dalam meraih semua mimpi-mimpimu. Tetaplah jadi diri sendiri yang hangat dan mengagumkan seperti yang aku kenal. Selamat ulang tahun, cintaku!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         6. GALLERY DENGAN LIGHTBOX INTERAKTIF
+    ======================================================== -->
+    <section id="section-gallery" class="inv-section">
+      <div class="stage-card">
+        <button class="pill-btn section-next-btn" data-goto="section-gift">Next</button>
+
+        <div class="gallery-header">
+          <h2 class="mixed-title">
+            <span class="script-cap">O</span>ur
+            <span class="script-cap">M</span>emories
+          </h2>
+          <p class="gallery-subtitle">Klik pada foto untuk melihat kenangan lebih dekat</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-polaroid" data-caption="Momen favorit bersama kamu — Muhammad Zaidan Alfathoni">
+            <div class="polaroid-img-wrap">
+              <img
+                src="assets/img/1.jpeg"
+                alt="Kenangan Pertama"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 320%22><rect width=%22400%22 height=%22320%22 fill=%22%233B0D11%22/><circle cx=%22200%22 cy=%22130%22 r=%2250%22 fill=%22%23F4F1EA%22 opacity=%220.2%22/><text x=%22200%22 y=%22165%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2220%22 fill=%22%23F4F1EA%22>Memory #01</text></svg>'"
+              />
+            </div>
+            <figcaption>Sweetest Smile</figcaption>
+          </figure>
+
+          <figure class="gallery-polaroid" data-caption="Foto hangat yang selalu bikin rindu setiap hari.">
+            <div class="polaroid-img-wrap">
+              <img
+                src="assets/img/3.jpeg"
+                alt="Kenangan Kedua"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 320%22><rect width=%22400%22 height=%22320%22 fill=%22%23541B20%22/><text x=%22200%22 y=%22165%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2220%22 fill=%22%23F4F1EA%22>Memory #02</text></svg>'"
+              />
+            </div>
+            <figcaption>Warm smile</figcaption>
+          </figure>
+
+          <figure class="gallery-polaroid" data-caption=" Kita yang penuh cerita indah.">
+            <div class="polaroid-img-wrap">
+              <img
+                src="assets/img/2.jpeg"
+                alt="Kenangan Ketiga"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 320%22><rect width=%22400%22 height=%22320%22 fill=%22%23421216%22/><text x=%22200%22 y=%22165%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2220%22 fill=%22%23F4F1EA%22>Memory #03</text></svg>'"
+              />
+            </div>
+            <figcaption>Cute</figcaption>
+          </figure>
+
+          <figure class="gallery-polaroid" data-caption="Kamu yang selalu bikin menenangkan hati.">
+            <div class="polaroid-img-wrap">
+              <img
+                src="assets/img/4.jpeg"
+                alt="Kenangan Keempat"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 320%22><rect width=%22400%22 height=%22320%22 fill=%22%235C2227%22/><text x=%22200%22 y=%22165%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2220%22 fill=%22%23F4F1EA%22>Memory #04</text></svg>'"
+              />
+            </div>
+            <figcaption>Golden Hour</figcaption>
+          </figure>
+
+          <figure class="gallery-polaroid" data-caption="Hari yang tak akan pernah terlupakan bersamamu.">
+            <div class="polaroid-img-wrap">
+              <img
+                src="assets/img/5.jpeg"
+                alt="Kenangan Kelima"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 320%22><rect width=%22400%22 height=%22320%22 fill=%22%233B0D11%22/><text x=%22200%22 y=%22165%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2220%22 fill=%22%23F4F1EA%22>Memory #05</text></svg>'"
+              />
+            </div>
+            <figcaption>Special Day</figcaption>
+          </figure>
+
+          <figure class="gallery-polaroid" data-caption="Selamat bertambah usia, semoga bahagia selalu menyertaimu.">
+            <div class="polaroid-img-wrap">
+              <img
+                src="assets/img/6.jpeg"
+                alt="Kenangan Keenam"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 320%22><rect width=%22400%22 height=%22320%22 fill=%22%234D181C%22/><text x=%22200%22 y=%22165%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2２２０%２２ fill=%２２%２３F4F1EA%２２>Memory #06</text></svg>'"
+              />
+            </div>
+            <figcaption>Forever Us</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         7. SPECIAL GIFT 
+    ======================================================== -->
+    <section id="section-gift" class="inv-section">
+      <div class="stage-card">
+        <button class="pill-btn section-next-btn" data-goto="section-flowers">Next</button>
+        <div id="giftClosedView" class="gift-closed-stage">
+          <h2 class="mixed-title"><span class="script-cap">S</span>pecial <span class="script-cap">G</span>ift</h2>
+          <p class="gift-instruction">Sentuh atau klik kotak hadiah di bawah ini untuk membuka kejutan</p>
+          <button id="btnUnboxGift" class="interactive-gift-box" aria-label="Buka Hadiah Kejutan">
+            <div class="gift-lid"><div class="gift-bow"></div></div>
+            <div class="gift-body"><div class="gift-ribbon-vertical"></div><span class="gift-tag">Untuk: Muhammad Zaidan</span></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         8. BEAUTIFUL FLOWERS
+    ======================================================== -->
+    <section id="section-flowers" class="inv-section">
+      <div class="stage-card">
+        <button class="pill-btn section-next-btn" data-goto="section-make-a-wish">Next</button>
+        <div class="flowers-page-content">
+          <div class="flowers-editorial-grid">
+            <div class="bouquet-col">
+              <h2 class="mixed-title flowers-heading"><span class="script-cap">B</span>eautiful <span class="script-cap">F</span>lowers</h2>
+              <div class="bouquet-wrapper">
+                <img class="vintage-bouquet-svg" src="assets/img/vintage-bouquet.svg" width="400" height="500" alt="Buket mawar burgundy, dusty pink, dan krem dengan eukaliptus, baby's breath, dan pita maroon" decoding="async" />
+              </div>
+            </div>
+            <div class="maroon-letter-card flowers-message-card">
+              <p>Katanya sih bunga itu simbol ketulusan dan keindahan, makanya pas banget buat mewakili perasaan aku ke kamu. Maaf ya cuma bisa kirim bunga digital dulu, belum bisa kirim diriku sendiri buat langsung meluk kamu hari ini. Jangan lupa ditaruh di tempat yang sering kamu lihat, biar tiap kali ngeliat bunganya, kamu ingat kalau ada orang di sini yang sayang banget sama kamu</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         9. MAKE A WISH 
+    ======================================================== -->
+    <section id="section-make-a-wish" class="inv-section">
+      <div class="stage-card">
+        <button class="pill-btn section-next-btn" data-goto="section-home">Replay &#8634;</button>
+        <div class="make-a-wish-stage final-wish-page">
+          <div class="wish-title-block">
+            <h2 class="mixed-heading wish-heading">
+              <span class="line-make"><span class="script-cap">M</span>ake a
+                <button id="btnBlowCandle" class="inline-cake-btn" title="Klik untuk meniup lilin" aria-label="Tiup lilin">
+                  <svg viewBox="0 0 120 95">
+                    <ellipse cx="60" cy="80" rx="48" ry="8" fill="#D5C7B8"/><rect x="24" y="42" width="72" height="36" rx="6" fill="#4A1A1E"/>
+                    <path d="M24,49 Q36,59 48,49 T72,49 T96,49" fill="none" stroke="#F4F1EA" stroke-width="3.5" stroke-linecap="round"/>
+                    <rect x="44" y="22" width="5" height="20" fill="#F4F1EA"/><rect x="58" y="18" width="5" height="24" fill="#F4F1EA"/><rect x="72" y="22" width="5" height="20" fill="#F4F1EA"/>
+                    <g id="candleFlames" class="candle-flames"><path d="M46.5,11 C43,16 45,21 46.5,21 C48,21 50,16 46.5,11 Z" fill="#FF9F1C"/><path d="M60.5,7 C57,12 59,17 60.5,17 C62,17 64,12 60.5,7 Z" fill="#FF9F1C"/><path d="M74.5,11 C71,16 73,21 74.5,21 C76,21 78,16 74.5,11 Z" fill="#FF9F1C"/></g>
+                  </svg>
+                </button>
+              </span>
+              <span class="line-wish"><span class="envelope-quill-illust small-quill" aria-hidden="true"><svg viewBox="0 0 120 90"><rect x="8" y="34" width="68" height="46" rx="3" fill="#D5C7B8" stroke="#6E5A4F" stroke-width="1.2"/><rect x="18" y="20" width="48" height="42" fill="#FBF9F5" stroke="#B8A99A" stroke-width="1"/><polygon points="8,80 42,54 76,80" fill="#DFD3C6" stroke="#6E5A4F" stroke-width="1"/><path d="M62,78 C72,54 88,28 106,10 C108,24 98,46 80,62 Z" fill="#3B0D11"/><path d="M58,84 L106,10" stroke="#231718" stroke-width="1.6"/></svg></span><span class="script-cap">W</span>ish</span>
+            </h2>
+            <p class="spaced-name">H a p p y &nbsp; B i r t h d a y</p>
+            <p id="candleStatusText" class="candle-hint">Sentuh kue ulang tahun untuk meniup lilin.</p>
+            <p class="wish-final-note"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       LIGHTBOX MODAL UNTUK GALLERY
+  ========================================================== -->
+  <div id="lightboxModal" class="lightbox-modal hidden" role="dialog" aria-modal="true" aria-label="Tampilan Foto Penuh">
+    <div class="lightbox-content">
+      <button id="lightboxClose" class="lightbox-close-btn" aria-label="Tutup tampilan foto">&times;</button>
+      <img id="lightboxImage" src="" alt="Foto Kenangan" />
+      <p id="lightboxCaption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Custom Vanilla JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
